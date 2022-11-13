@@ -1,0 +1,61 @@
+
+
+
+.body {
+    font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
+    font-size: 81.25%;
+  }
+  
+.button {
+font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
+  }
+
+.corners1 {
+border-radius: 50px;
+width: 300px;
+
+}
+
+.corners2 {
+  border-radius: 10px;
+}
+
+.sharp {
+  border-radius: 1px;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+.font1{
+    color: black;
+  }
+  
+
+img.google {
+    height: 150%;
+    width: 150%;
+  }
+
+.pad1 {
+    padding-left: 20px;
+  }
+
+
+.title2 {
+  color: red;
+  margin-left: 30px;
+  font-size: 20px;
+
+}
+
+.nobull {
+  list-style-type: none;
+ }
+
