@@ -1,85 +1,36 @@
 <!DOCTYPE html>
 <html>
+<head>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<body>
+
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<link rel="stylesheet" href="/style/style.css">
+<script src="js.js"></script>
 
-<script>
-
-//Set chart, 24 months, 3 curves inflation rate, unemployment rate, interest rate
-
-var xmonths = [...Array(24).keys()];
-var xValues = xmonths;
-var intrate = 0;
-var unemrate = 5;
-var inflrate = 2;
-
-const unemp = [5];
-const infl = [2];
-const intr = [0];
+</head>
 
 
-// increate interest rates
-function incrate() {
-    intrate = intrate + 0.25;
-    document.querySelector("#intrate").innerHTML = intrate;
-}
-
-//decrease interest rates
-function decrate() {
-    intrate = intrate - 0.25;
-    document.querySelector("#intrate").innerHTML = intrate;
-}
+<body>
 
 
 
-// chart details
-const chart = new Chart("myChart", {
-  type: "line",
-  data: {
-    labels: xValues,
-    datasets: [{ 
-      data: intr,
-      borderColor: "red",
-      fill: false
-    }, { 
-      data: infl,
-      borderColor: "green",
-      fill: false
-    }, { 
-      data: unemp,
-      borderColor: "blue",
-      fill: false
-    }]
-  },
-  options: {
-    legend: {display: true}
-  }
-});
-
-// create new data points for unemployment rate, inflation rate and interest rate and add arrays
-function execute() {
-    unemrate = unemrate + intrate;
-    inflrate = inflrate - intrate;
-    infl.push(inflrate);
-    unemp.push(unemrate);
-    intr.push(intrate);
-    console.log(unemp);
-    console.log(infl);
-    console.log(intr);
-    chart.update();
-}
-
-</script>
 
 <div>
-    <h1> Interest Rates Control </h1>
+    <h2> Interest Rates Control </h2>
 
 <button id="increase" onclick="incrate()">INCREASE</button>
 <button id="decrease" onclick="decrate()">DECREASE</button>
 <button id="submit" onclick="execute()">SUBMIT</button>
+<div></div>
 
-<div id="intrate"> 0 </div>
+<table>
+  <th> Target rate:
+  </th>
+  <th id="intrate"> 0
+  </th>
+</table>
 
 
 <table>
@@ -88,8 +39,8 @@ function execute() {
     <th>Current rate</th>
     </tr>
     <tr>
-        <td>0</td>
-        <td>0</td>
+        <td id="currentm">0</td>
+        <td id="currentrate"> 0</td>
     </tr>
 </table>
 
