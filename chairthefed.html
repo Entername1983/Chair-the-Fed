@@ -17,7 +17,6 @@ var inflrate = 2;
 const unemp = [5];
 const infl = [2];
 const intr = [0];
-const array = [];
 
 
 // increate interest rates
@@ -35,7 +34,7 @@ function decrate() {
 
 
 // chart details
-new Chart("myChart", {
+const chart = new Chart("myChart", {
   type: "line",
   data: {
     labels: xValues,
