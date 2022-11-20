@@ -1,52 +1,24 @@
-.body {
-  font-family: Roboto, "Segoe UI", Tahoma, sans-serif;
-  font-size: 81.25%;
+body {
+  background-color: #e5eae5 !important;
 }
 
-.button {
-  font-family: Roboto, "Segoe UI", Tahoma, sans-serif;
+canvas {
+  background-color: #c2e8a0;
+  border: 1px solid #000000;
 }
 
-.corners1 {
-  border-radius: 50px;
-  width: 300px;
+#increase {
+  background-color: rgb(89, 89, 252);
 }
 
-.corners2 {
-  border-radius: 10px;
+#decrease {
+  background-color: rgb(229, 160, 99);
 }
 
-.sharp {
-  border-radius: 1px;
+#submit {
+  background-color: rgb(133, 192, 84);
 }
 
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.font1 {
-  color: black;
-}
-
-img.google {
-  height: 150%;
-  width: 150%;
-}
-
-.pad1 {
-  padding-left: 20px;
-}
-
-.title2 {
-  color: red;
-  margin-left: 30px;
-  font-size: 20px;
-}
-
-.nobull {
-  list-style-type: none;
+button {
+  margin: 5px;
 }/*# sourceMappingURL=style.css.map */
