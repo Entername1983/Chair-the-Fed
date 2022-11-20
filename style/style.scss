@@ -1,13 +1,13 @@
+
+body {
+    background-color: #e5eae5 !important;
+}
+
 canvas {
     background-color: #c2e8a0;
     border: 1px solid #000000;
 }
 
-table {
-    border: #000000;
-    border-style:dashed;
-   border-width: 1px;
-}
 
 #increase {
     background-color: rgb(89, 89, 252);
@@ -20,3 +20,8 @@ table {
 #submit {
     background-color: rgb(133, 192, 84);
 }
+
+button {
+    margin: 5px;
+}
+
