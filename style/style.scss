@@ -1,11 +1,12 @@
 
 body {
-    background-color: #e5eae5 !important;
+    background-color: #F4F1DE !important;
+    font-family: Merriweather;
 }
 
 canvas {
-    background-color: #c2e8a0;
-    border: 1px solid #000000;
+    background-color: #F4F1DE !important;
+    border: 1px solid #662E9B;
 }
 
 
@@ -23,5 +24,57 @@ canvas {
 
 button {
     margin: 5px;
+    color: #3D405B !important;
+    background-color: #81B29A !important;
+    border-color: #E07A5F !important;
 }
 
+
+#r1
+{
+    background-color: #F2CC8F !important;
+    border-style: dotted !important;
+    border-color: #81B29A !important;
+    border: 2px #81B29A !important;
+    padding: 5px;
+    margin: 2px;
+}
+
+#h1
+{
+    background-color: #E07A5F !important;
+}
+
+#r2
+{
+    background-color: #E07A5F !important;
+}
+
+
+table.table-bordered{
+    border:1px solid #662E9B!important;
+    margin:10px;
+  }
+
+table.table-bordered > thead > tr > th{
+    border:1px solid #662E9B!important;
+}
+table.table-bordered > thead > th{
+    border:1px solid #662E9B!important;
+}
+table.table-bordered > thead {
+    border:1px solid #662E9B!important;
+}
+
+table.table-bordered > tbody > tr > td{
+    border:1px solid #662E9B!important;
+}
+
+#infobox {
+    background-color: #E07A5F !important;
+    border:1px solid #662E9B!important;
+}
+
+a {
+    color: #662E9B!important;
+  }
