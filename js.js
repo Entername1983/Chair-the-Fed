@@ -3,9 +3,9 @@
 //Set chart, 24 months, 3 curves inflation rate, unemployment rate, interest rate
 
 //duration
-const dur = 48
+const dur = 47
 
-var xmonths = [...Array(dur+1).keys()];
+var xmonths = [...Array(dur+2).keys()];
 var xValues = xmonths;
 var intrate = 2;
 var unemrate = 5;
@@ -24,14 +24,14 @@ const intr = [2];
 const events = [
     {ref: 1, title: "Trade War!", 
     message: "The elescation of protectionist policies such as tariffs and quotas has lead to a trade war between you and one of your major trading partners.", 
-    impactA: 2, impactB: 2, img: 'images/tradewar.jpg', 
+    impactA: 1.2, impactB: 1.4, img: 'images/tradewar.jpg', 
     info: `"Trade wars can have many impacts on the economy, they can reduce the availability of imports and make it harder for your exports to reach customers abroad, read more about them <a href="https://www.investopedia.com/terms/t/trade-war.asp" target="_blank">here</a>"`}, 
     {ref: 2, title: "Oil shock",
      message: "OPEC's decision to restrict it's supply has sent prices skyrocketing.", 
-     impactA: 1.4, impactB: 2, img: 'images/oil.jpg', 
+     impactA: 1.2, impactB: 1.5, img: 'images/oil.jpg', 
      info:`"Oil shocks, such as was <a href="https://www.investopedia.com/1973-energy-crisis-definition-5222090#:~:text=The%201973%20energy%20crisis%20was,sell%20crude%20to%20the%20U.S." target="_blank">experienced in the 1970s</a>, are diffult for central banks to manage as they cause inflationary pressure without the low levels of unemployed experienced when the economy is overheating."`}, 
     {ref: 3, title: "World recession!",
-     message: "The world economy has entered a deep recession.", impactA: 2, impactB: 0.2, img: 'images/recession.jpg', 
+     message: "The world economy has entered a deep recession.", impactA: 1.5, impactB: 0.4, img: 'images/recession.jpg', 
      info:`"A common definition of a <a href="https://www.investopedia.com/terms/r/recession.asp" target="_blank">recession</a> is two consecutive quarters (6 months) of negative GDP growth.  It also usually consists of a decrease in unemployment, a decrease in inflation (and possibly even deflation) as well as a decrease in stock valuations."`},
     {ref: 4, title: "New energy breakthrough!", 
     message: "A recent succesful experiment at ITER is expected to finally lead to the fusion power.", 
@@ -42,7 +42,7 @@ const events = [
     impactA: 1.2, impactB: 1.5, img: 'images/pandemic.jpg', 
     info: `"The covid pandemic surprised us all, especially economists.  One thing is for sure it is that they lead to serious  <a href="https://www.investopedia.com/terms/e/economic-shock.asp#:~:text=Demand%20shocks%20happen%20when%20there,or%20investment%20spending%20from%20businesses." target="_blank">shocks</a> to the economy"`},
     {ref: 6, title: "Increase in retirees", 
-    message: "This month has seen the largest ever increase in the retired population, our dependency ratio is now at an all time high.", impactA: 0.6, impactB: 1.3, img: 'images/retirees.jpg', 
+    message: "This month has seen the largest ever increase in the retired population, our dependency ratio is now at an all time high.", impactA: 0.7, impactB: 1.2, img: 'images/retirees.jpg', 
     info: `"It's finally arrived, with the retirement of baby boomers our <a href="https://www.investopedia.com/terms/d/dependencyratio.asp" target="_blank">dependency ratio</a> has taken a turn for the worse.   How will this affect your choice of monetary policy?"` },
     {ref: 7, title: "Crypto bubble",
      message: "Crypto mania has once again swept the nation!  We're all gonna be rich bro!", 
@@ -53,11 +53,11 @@ const events = [
      impactA: 0.5, impactB: 2, img: 'images/freespending.jpg', 
      info:`"Politicians sometimes get elected by overpromising to their electorate, once they get elected they can be incentivized to use their power to reward the segments of the population that voted for them and ensure they get re-elected.  This can lead to the government spending more than it can afford.  In the most extreme situations, when there is no strong seperation between the central bank and the government, it can even lead to printing money to fund this expenditure with catastrophic results"`},
     {ref: 9, title: "Austerity is back in fashion", 
-    message: "Time to tighten your belt!  Empty plates are back on the menu boys!  Can the government really be fiscally responsible?", impactA: 1.8, impactB: 0.5, img: 'images/austerity.jpg', 
+    message: "Time to tighten your belt!  Empty plates are back on the menu boys!  Can the government really be fiscally responsible?", impactA: 1.4, impactB: 0.7, img: 'images/austerity.jpg', 
     info: `"<a href="https://www.investopedia.com/terms/a/austerity.asp" target="_blank">Austerity</a> tends to be popular with creditors but not the general population of a country.  Ideally governments would be fiscally responsible during the good times and spend beyond their means during recessiosn, unfortunately human nature usually means the opposite happens."`},
     {ref: 10, title: "Climate disaster", 
     message: "Hurricanes, tornadoes, droughts and floods all at the same time.", 
-    impactA: 1.2, impactB: 1.6, img: 'images/climate.jpg', 
+    impactA: 1.1, impactB: 1.4, img: 'images/climate.jpg', 
     info: `"Climate change and its economic impacts carry a lot of uncertainty.  There will be winners and there will be losers, but one thing is certain: <a href="https://climate.nasa.gov/solutions/adaptation-mitigation/" target="_blank">adaption and mitigation</a> have an economic cost"`},
 ]
 
@@ -168,6 +168,8 @@ const chart = new Chart("myChart", {
 function execute() 
 {
     //check if reached the of the game
+    console.log(currentM)
+    console.log(dur)
     if (currentM <= dur)
     {
 
@@ -176,8 +178,9 @@ function execute()
         let A = 1;
         let B = 1;
         let x = Math.floor((Math.random() * 100));
+        let c = 0;
         
-            if (x < 10)
+            if (x < 10 && c < 7)
                 {
                     document.querySelector("#mtitle").innerHTML = events[x].title
                     document.querySelector("#message").innerHTML = events[x].message
@@ -186,12 +189,12 @@ function execute()
                     unemrate = unemrate + events[x].impactA
                     A = events[x].impactA
                     B = events[x].impactB
+                    c ++
 
                 }
         
         //determine new unemployment & inflation rates
         currentM ++;
-        console.log(currentM);
 
         //effective interest rate = 30% current rate, 70% rate of 3 months ago (if less than 3 months use pr value)
         if (currentM <= 3)  
@@ -224,8 +227,7 @@ function execute()
         //calc new inflation rate and unemployment rate
         unemrate = ((unemrate + rr/2 + (unemrate * uc))/2) * A
         inflrate = (inflrate + ((3 - rr)*ic)) * B
-        console.log(unemrate)
-        console.log(inflrate)
+
 
         if (unemrate < 1)
         {
@@ -289,9 +291,10 @@ function execute()
         
         // Find a <table> element with id="myTable":
         var table = document.getElementById("table0");
-
+        
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(1);
+        
 
         // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
         var cell1 = row.insertCell(0);
@@ -307,11 +310,10 @@ function execute()
         cell5.innerHTML = recmonth[currentM].GDP.toFixed();
 
         chart.update();
-        if (currentM > dur-1)
+
+        if (currentM === (48))
             {
-                console.log(currentM)
-                {
-                    console.log("test")
+                    
                     let tintrate = 0;
                     let tunemrate = 0;
                     let tinflrate = 0;
@@ -321,7 +323,6 @@ function execute()
                             tintrate = tintrate + recmonth[i].intr
                             tunemrate = tunemrate + recmonth[i].unemp
                             tinflrate = tinflrate + recmonth[i].infl
-                            console.log(tintrate)
                             tintrate = tintrate
                             tunemrate = tunemrate
                             tinflrate = tinflrate
@@ -334,13 +335,18 @@ function execute()
 
 
                     var endtitle = 'Game Over';
-                    var end = `Congratulations, you have finished your first two years as Chairman of the Federal Reserve!  During your tenure the average target interest rate was ${tintrate}, your average unemployment rate was ${tunemrate} and the average inflation rate was ${tinflrate}, your final score is ${GDP}.  If you would like to play again refresh this page.`;
-                    var endm = `If you would like to learn more about monetary policy consider visiting the links I shared throughout the simulation.  <a href="https://www.investopedia.com" target="_blank">Investopedia</a> is a wonderful resource!  You can also visit <a href="https://www.federalreserve.gov/" target="_blank">the Federal Reserve's website</a> to see their latest anouncements.`
+                    var end = `Congratulations, you have finished your first four years as Chairman of the Federal Reserve!  During your tenure the average target interest rate was ${tintrate}, your average unemployment rate was ${tunemrate} and the average inflation rate was ${tinflrate}, your final score is ${GDP}.  If you would like to play again refresh this page.`;
+                    var endm = `"If you would like to learn more about monetary policy consider visiting the links I shared throughout the simulation.  <a href="https://www.investopedia.com" target="_blank">Investopedia</a> is a wonderful resource!  You can also visit <a href="https://www.federalreserve.gov/" target="_blank">the Federal Reserve's website</a> to see their latest anouncements."`
                     document.querySelector("#message").innerHTML = end
                     document.querySelector("#mtitle").innerHTML = endtitle
                     document.querySelector("#help").innerHTML = endm
-                }
+                    document.addEventListener("DOMContentLoaded", function () {
+                        document.getElementById("#submit").style.display = "none";
+                    });
+    
             }
+
+
     }
 
 }
